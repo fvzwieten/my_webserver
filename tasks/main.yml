@@ -1,0 +1,13 @@
+---
+# tasks file for my_webserver
+- name: install packages
+  yum:
+    name: httpd
+    state: latest
+
+- name: put content on the webserver
+  copy:
+    content: "This is my webserver"
+    dest: /var/www/html/index.html
+  notify: restart_webserver
+
